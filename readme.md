@@ -2,8 +2,9 @@ Code to run the experiments
 
 # Dependencies
 
-pip install transformers
-pip install datasets
+`pip install transformers`
+
+`pip install datasets`
 
 # Note
 
@@ -21,11 +22,16 @@ These weights are same as the ones from huggingface except the weights are trans
 ### --- The command that runs in train_qa.sh is below ---
 
 --is_lora = if use lora
+
 --a_bit = activation quantization bit width
+
 --w_bit = weight quantization bit width
+
 --only-eval = used to evaluate
+
 --eval_model_name = model name if you want to evaluate
 
+```
 CUDA_LAUNCH_BLOCKING=1 python run_qa_quant_lora.py \
     --dataset_name squad \
     --max_seq_length 384 \
@@ -42,7 +48,7 @@ CUDA_LAUNCH_BLOCKING=1 python run_qa_quant_lora.py \
     --w_bit 4 \
     --eval_model_name model.bin \
     --disable_wandb 0
-
+```
 ### --------------------
 
 ## For switch precision training
