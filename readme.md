@@ -14,11 +14,12 @@ Download & save it as "pytorch_model.bin"
 
 These weights are same as the ones from huggingface except the weights are transposed for ease of implementation of Quant & use on nn.Lienar (since default hugginface gpt2 has nn.Conv2D in the implementation)
 
-# Run only lora + LLM-QAT (The LLM-QAT code inside utils_qat.py taken from https://github.com/facebookresearch/LLM-QAT/blob/main/models/utils_quant.py)
+### Run only lora + LLM-QAT (The LLM-QAT code inside utils_qat.py taken from https://github.com/facebookresearch/LLM-QAT/blob/main/models/utils_quant.py)
 
 ./train_qa.sh
 
-# --- The command that runs in train_qa.sh is below ---
+### --- The command that runs in train_qa.sh is below ---
+
 --is_lora = if use lora
 --a_bit = activation quantization bit width
 --w_bit = weight quantization bit width
@@ -42,20 +43,20 @@ CUDA_LAUNCH_BLOCKING=1 python run_qa_quant_lora.py \
     --eval_model_name model.bin \
     --disable_wandb 0
 
-# --------------------
+### --------------------
 
-# For switch precision training
+## For switch precision training
 
 ./train_switch.sh
 
 To change the bit-widths used in switch change line 869/870 in run_qa_lora_quant_switch.py
 
-# For cycle precision training
+## For cycle precision training
 
 ./train_cycle.sh
 
 
-# Other files
+## Other files
 
 The other files are 
 custom_gpt2_lora_switch.py -> Model implementation with LoRA for each linear layer, LLM-QAT quantization & different quantziation for different layers
